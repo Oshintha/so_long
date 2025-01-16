@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:11:25 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/10 17:19:28 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:40:41 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	render_tile(t_game *game, char tile, int y, int x)
 	else if (tile == COLLECTIBLE)
 	{
 		if (render_collectibles(game, y, x) == -1)
-			handle_error("Unable to render Pac-Men", game);
+			handle_error("Unable to render Gift", game);
 	}
 	else if (tile == EXIT || tile == EXIT_OPEN)
 	{
@@ -31,9 +31,7 @@ static void	render_tile(t_game *game, char tile, int y, int x)
 	}
 }
 
-// Covers entire window with background image before rendering 
-// the remaining game elements.
-static void	cover_background(t_game *game)
+static void	cover_empty_space(t_game *game)
 {
 	int		x;
 	int		y;
@@ -44,8 +42,8 @@ static void	cover_background(t_game *game)
 		x = 0;
 		while (x < game->map_width)
 		{
-			if (render_background(game, y, x) == -1)
-				handle_error("Unable to render background.", game);
+			if (render_empty_space(game, y, x) == -1)
+				handle_error("Unable to render empty_space.", game);
 			x++;
 		}
 		y++;
@@ -60,7 +58,7 @@ void	render_static_map(t_game *game)
 	int		y;
 	char	tile;
 
-	cover_background(game);
+	cover_empty_space(game);
 	y = 0;
 	while (y < game->map_height)
 	{

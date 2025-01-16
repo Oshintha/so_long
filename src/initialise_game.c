@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:00:13 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/13 11:44:28 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/16 21:22:44 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	init_mlx_window(t_game *game)
 	if (game->map_width <= 0 || game->map_height <= 0)
         handle_error("Invalid map dimensions. Cannot create game window.", game);
     game->mlx_ptr = mlx_init((game->map_width) * TILESIZE, game->map_height
-			* TILESIZE, "~~~~~~ The Gift Seeker ~~~~~~", false);
+			* TILESIZE, "****** The Gift Seeker ******", false);
 	if (!game->mlx_ptr)
         handle_error("Unable to create game window. Check MLX initialization.", game);
 }
@@ -55,10 +55,10 @@ static int	find_player_position(t_game *game)
 		j = 0;
 		while (j < game->map_width)
 		{
-			if (game->map->full[i][j] == PLAYER_START)
+			if (game->map->full[i][j] == PLAYER)
 			{
-				game->map->player_start.x = j;
-				game->map->player_start.y = i;
+				game->map->player.x = j;
+				game->map->player.y = i;
 				game->map->full[i][j] = EMPTY_SPACE;
 				return (1);
 			}

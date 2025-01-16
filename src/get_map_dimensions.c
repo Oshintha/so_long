@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:22:14 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/13 11:28:00 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:16:32 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static size_t	find_height(int fd, char *line, size_t height, size_t *width)
 		if (line_len != *width)
 		{
 			free(line);
-            handle_error("Error: Inconsistent map line widths.", NULL);
+            handle_error("Inconsistent map line widths.", NULL);
 		}
 		height++;
 		free(line);

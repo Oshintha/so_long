@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:06:40 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/13 11:25:37 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/16 15:19:55 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	open_map_file(char *map_file_name)
 
 	fd = open(map_file_name, O_RDONLY);
 	if (fd <= 0)
-		handle_error("Error: Could not open map file.", NULL);
+		handle_error("Could not open map file.", NULL);
 	return (fd);
 }
 

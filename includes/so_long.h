@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 23:40:10 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/10 10:07:08 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/16 22:48:11 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define WALL			'1'
 # define COLLECTIBLE	'C'
 # define EXIT			'E'
-# define PLAYER_START	'P'
+# define PLAYER			'P'
 
 # define EXIT_OPEN		'X'
 
@@ -42,7 +42,7 @@ typedef struct s_textures
 	mlx_texture_t	*empty_space;
 	mlx_texture_t	*wall;
 	mlx_texture_t	*collectible;
-	mlx_texture_t	*player_start;
+	mlx_texture_t	*player;
 	mlx_texture_t	*exit;
 	mlx_texture_t	*exit_open;
 }	t_textures;
@@ -52,7 +52,7 @@ typedef struct s_images
 	mlx_image_t	*empty_space;
 	mlx_image_t	*wall;
 	mlx_image_t	*collectible;
-	mlx_image_t	*player_start;
+	mlx_image_t	*player;
 	mlx_image_t	*exit;
 	mlx_image_t	*exit_open;
 }	t_images;
@@ -60,7 +60,7 @@ typedef struct s_images
 typedef struct s_map
 {
 	char		**full;
-	t_position	player_start;
+	t_position	player;
 	t_position	tiles_to_render;
 	t_position	exit;
 }	t_map;
@@ -93,7 +93,7 @@ void	load_images(t_game *game);
 void	free_images(t_game *game);
 void	free_textures(t_game *game);
 void	render_static_map(t_game *game);
-int		render_background(t_game *game, int y, int x);
+int		render_empty_space(t_game *game, int y, int x);
 int		render_collectibles(t_game *game, int y, int x);
 int		render_exit(t_game *game, int y, int x);
 int		render_player(t_game *game);

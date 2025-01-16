@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:21:26 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/13 11:45:22 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/16 20:07:20 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ static void	ft_hook(void *param)
 	int		new_y;
 
 	game = (t_game *)param;
-	new_x = game->map->player_start.x;
-	new_y = game->map->player_start.y;
+	new_x = game->map->player.x;
+	new_y = game->map->player.y;
 	if (game->move_cooldown > 0)
 	{
 		game->move_cooldown--;
@@ -60,12 +60,11 @@ static void	ft_hook(void *param)
 	}
 	set_movement_direction(game, &new_x, &new_y);
 	if (can_move(game, new_x, new_y)
-		&& (new_x != game->map->player_start.x || new_y != game->map->player_start.y))
+		&& (new_x != game->map->player.x || new_y != game->map->player.y))
 		update_player_position(game, new_x, new_y);
 	game->move_cooldown = MOVE_DELAY;
 }
 
-// Manages MLS loops and everything related to movement and changes.
 void	manage_motion(t_game *game)
 {
 	mlx_loop_hook(game->mlx_ptr, ft_hook, game);
