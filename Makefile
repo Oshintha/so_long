@@ -6,15 +6,14 @@
 #    By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 20:18:19 by aoshinth          #+#    #+#              #
-#    Updated: 2024/12/23 20:18:19 by aoshinth         ###   ########.fr        #
+#    Updated: 2025/01/16 23:35:22 by aoshinth         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-               
+
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./mlx/include -Iincludes
 
-# Source files
 SRCS = ./src/main.c ./src/validate_args.c ./src/read_map.c ./src/get_map_dimensions.c \
 		./src/validate_map.c ./src/render_images.c ./src/render_static_map.c \
 		./src/load_images.c ./src/initialise_game.c ./src/manage_motion.c \

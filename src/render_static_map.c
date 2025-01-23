@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:11:25 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/16 17:40:41 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:44:27 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ static void	cover_empty_space(t_game *game)
 	}
 }
 
-// Renders all game elements on top of the background image
-// except for the player.
 void	render_static_map(t_game *game)
 {
 	int		x;

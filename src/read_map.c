@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:06:40 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/16 15:19:55 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:43:50 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,6 @@ static void	init_map_structure(t_game *game, size_t height)
 	}
 }
 
-// Helper function to handle map_line allocation error
-// related to one edge case in get_next_line
-// where if reading one line failed, the entire map should be
-// read to the end before freeing allocated memory.
 static void	handle_allocation_error(int fd, t_game *game, char *map_line)
 {
 	free(map_line);
@@ -58,10 +54,6 @@ static void	handle_allocation_error(int fd, t_game *game, char *map_line)
 	handle_error("Memory allocation failed for line.", game);
 }
 
-// Read map line one by one using get_next_line()
-// Check if the first line is empty.
-// Inside the loop: Process the first line and continue reading remaining lines
-// Handle case where file ends prematurely
 static void	read_map_lines(int fd, t_game *game)
 {
 	char	*map_line;
@@ -73,10 +65,10 @@ static void	read_map_lines(int fd, t_game *game)
 		map_line = get_next_line(fd);
 		if (!map_line)
 		{
-			if(i< game->map_height)
-            	handle_error("Invalid line length in map file.", game);
+			if (i < game->map_height)
+				handle_error("Invalid line length in map file.", game);
 			else
-            handle_error("Unexpected end of file in map.", game);
+				handle_error("Unexpected end of file in map.", game);
 		}
 		game->map->full[i] = ft_calloc(game->map_width + 1, sizeof(char));
 		if (!game->map->full[i])
@@ -87,12 +79,6 @@ static void	read_map_lines(int fd, t_game *game)
 	}
 }
 
-// Get's map dimensions and copies the file map
-// into a 2d array for use in the game.
-// Closes the file descriptor (fd) if valid.
-// Handles error and exits the game if file is too big:
-// Map size limit width: 60, height: 32.
-// (This limit is based on my current computer screen size).
 void	read_map(char *map_file_name, t_game *game)
 {
 	int		fd;

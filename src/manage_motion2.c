@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 17:21:53 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/16 22:11:49 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:40:40 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,13 @@ void	open_exit(t_game *game)
 void	clear_old_position(t_game *game, int old_y, int old_x)
 {
 	char	old_tile;
+
 	old_tile = game->map->full[old_y][old_x];
-	if (old_tile == EMPTY_SPACE || old_tile == COLLECTIBLE)
+	if (old_tile == EMPTY_SPACE || old_tile == COLLECTIBLE || old_tile
+		== PLAYER)
 	{	
 		if (render_empty_space(game, old_y, old_x) == -1)
 			handle_error("Unable to render empty_space image.", game);
-			
 	}
 	else if (old_tile == EXIT || old_tile == EXIT_OPEN)
 	{

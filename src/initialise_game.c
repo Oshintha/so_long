@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:00:13 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/16 21:22:44 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:41:10 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,22 @@ static void	initialise_vars(t_game *game)
 static void	init_mlx_window(t_game *game)
 {
 	if (game->map_width <= 0 || game->map_height <= 0)
-        handle_error("Invalid map dimensions. Cannot create game window.", game);
-    game->mlx_ptr = mlx_init((game->map_width) * TILESIZE, game->map_height
-			* TILESIZE, "****** The Gift Seeker ******", false);
+		handle_error("Invalid map dimensions. Cannot create game window.",
+			game);
+	game->mlx_ptr = mlx_init((game->map_width) * TILESIZE, game->map_height
+			* TILESIZE, "🎁✨ Welcome to The Gift Seeker! 🎄🎮", false);
 	if (!game->mlx_ptr)
-        handle_error("Unable to create game window. Check MLX initialization.", game);
+		handle_error("Unable to create game window. Check MLX initialization.",
+			game);
 }
 
-// Finds player's starting point.
-// This function also turns the initial 
-// player position into a background tile!
 static int	find_player_position(t_game *game)
 {
 	int	i;
 	int	j;
 
 	if (!game->map || !game->map->full)
-    handle_error("Map data is missing or invalid.", game);
+		handle_error("Map data is missing or invalid.", game);
 	i = 0;
 	while (i < game->map_height)
 	{

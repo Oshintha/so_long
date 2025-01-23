@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:14:17 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/10 11:23:00 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:28:53 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,28 @@
 
 static void	free_2d_array(char **array, int height)
 {
-    int	i;
+	int	i;
 
-    i = 0;
-    if (!array)
-        return ;
-    while (i < height)
-    {
-        free(array[i]);
-        i++;
-    }
-    free(array);
+	i = 0;
+	if (!array)
+		return ;
+	while (i < height)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
 }
 
 static void	free_map(t_game *game)
 {
-    if (game->map)
-    {
-        free_2d_array(game->map->full, game->map_height);
-        free(game->map);
-    }
+	if (game->map)
+	{
+		free_2d_array(game->map->full, game->map_height);
+		free(game->map);
+	}
 }
 
-// Frees all memory that is still allocated up to this point.
 void	cleanup_game(t_game *game)
 {
 	if (!game)

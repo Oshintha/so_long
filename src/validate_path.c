@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:01:32 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/16 20:09:19 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:53:59 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,6 @@ static bool	ft_floodfill(t_game *game, int y, int x, int *c_count)
 	return (false);
 }
 
-// This function uses the same full 2d map to verify if the path is valid,
-// that is, if exits and collectibles can all be reached.
-// All background, collectibles and exit tiles
-// are replaced with corresponding characters:
-// E -> e C -> c, 0 -> o.
-// The map is then restored to its original characters.
-
 void	validate_path(t_game *game)
 {
 	int	x;
@@ -97,7 +90,8 @@ void	validate_path(t_game *game)
 			{
 				ft_floodfill(game, y, x, &c_count);
 				if (c_count != 0)
-					handle_error("One or more collectibles are inaccessible.", game);
+					handle_error("One or more collectibles are inaccessible.",
+						game);
 				if (game->exit_flag == 0)
 					handle_error("The Exit is not accessible!", game);
 				restore_map(game);
