@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 14:44:31 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/17 14:53:36 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:50:19 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,13 @@ static void	validate_tiles(t_game *game)
 
 static void	validate_counts(t_game *game)
 {
+	if (game->player_count == 0 && game->exit_count
+		== 0 && game->collectible_count == 0)
+		handle_error("The map is empty or missing essential components", game);
 	if (game->player_count != 1)
-		handle_error("The map must contain one player.", game);
+		handle_error("The map must contain exactly one player.", game);
 	if (game->exit_count != 1)
-		handle_error("The map must contain one exit.", game);
+		handle_error("The map must contain exactly one exit.", game);
 	if (game->collectible_count < 1)
 		handle_error("The map must contain at least one collectible.", game);
 }

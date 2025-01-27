@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 23:40:10 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/17 09:20:49 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:59:28 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define EXIT_OPEN		'X'
 
 # define TILESIZE		64
-# define MOVE_DELAY		6
+# define MOVE_DELAY		7
 
 typedef struct s_position
 {
@@ -83,10 +83,17 @@ typedef struct s_game
 	int			exit_count;
 }	t_game;
 
+typedef struct s_map_data
+{
+    int      fd;
+    size_t   *width;
+    t_game   *game;
+} t_map_data;
+
 void	validate_args(int argc, char *map_file_name);
 int		initialise_game(t_game *game, char *map_name);
 void	read_map(char *map_file_name, t_game *game);
-size_t	get_map_dimensions(int fd, size_t *width);
+size_t	get_map_dimensions(int fd, size_t *width, t_game *game);
 void	validate_map(t_game *game);
 void	validate_path(t_game *game);
 void	load_images(t_game *game);

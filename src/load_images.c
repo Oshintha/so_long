@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 16:40:28 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/17 14:34:16 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:34:26 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,12 @@ static int	load_textures(t_game *game)
 	game->textures = ft_calloc(1, sizeof(t_textures));
 	if (!game->textures)
 		return (0);
-	game->textures->empty_space = mlx_load_png("images/empty_space.png");
-	game->textures->wall = mlx_load_png("images/wall.png");
-	game->textures->collectible = mlx_load_png("images/collectible.png");
-	game->textures->player = mlx_load_png("images/player.png");
-	game->textures->exit = mlx_load_png("images/exit.png");
-	game->textures->exit_open = mlx_load_png("images/exit_open.png");
+	game->textures->empty_space = mlx_load_png("textures/empty_space.png");
+	game->textures->wall = mlx_load_png("textures/wall.png");
+	game->textures->collectible = mlx_load_png("textures/collectible.png");
+	game->textures->player = mlx_load_png("textures/player.png");
+	game->textures->exit = mlx_load_png("textures/exit.png");
+	game->textures->exit_open = mlx_load_png("textures/exit_open.png");
 	if (!game->textures->empty_space || !game->textures->wall
 		|| !game->textures->collectible || !game->textures->player
 		|| !game->textures->exit || !game->textures->exit_open)

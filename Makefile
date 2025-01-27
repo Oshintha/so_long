@@ -6,7 +6,7 @@
 #    By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 20:18:19 by aoshinth          #+#    #+#              #
-#    Updated: 2025/01/16 23:35:22 by aoshinth         ###   ########.fr        #
+#    Updated: 2025/01/23 15:08:27 by aoshinth         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror -I./mlx/include -Iincludes
 SRCS = ./src/main.c ./src/validate_args.c ./src/read_map.c ./src/get_map_dimensions.c \
 		./src/validate_map.c ./src/render_images.c ./src/render_static_map.c \
 		./src/load_images.c ./src/initialise_game.c ./src/manage_motion.c \
-		./src/manage_motion2.c ./src/utils.c ./src/win_game.c ./src/cleanup_game.c \
+		./src/manage_motion2.c ./src/utils.c ./src/cleanup_game.c \
 		./src/validate_path.c
 
 # Object files (replace .c with .o)

@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:06:40 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/17 14:43:50 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:24:14 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ static void	read_map_lines(int fd, t_game *game)
 	int		i;
 
 	i = 0;
-	while (i < game->map_height)
+	map_line = get_next_line(fd);
+	while (map_line != NULL)
 	{
-		map_line = get_next_line(fd);
 		if (!map_line)
 		{
 			if (i < game->map_height)
@@ -75,6 +75,7 @@ static void	read_map_lines(int fd, t_game *game)
 			handle_allocation_error(fd, game, map_line);
 		ft_strlcpy(game->map->full[i], map_line, game->map_width + 1);
 		free(map_line);
+		map_line = get_next_line(fd);
 		i++;
 	}
 }
@@ -87,7 +88,7 @@ void	read_map(char *map_file_name, t_game *game)
 
 	width = 0;
 	fd = open_map_file(map_file_name);
-	height = get_map_dimensions(fd, &width);
+	height = get_map_dimensions(fd, &width, game);
 	init_map_structure(game, height);
 	game->map_width = width;
 	game->map_height = height;
@@ -97,6 +98,4 @@ void	read_map(char *map_file_name, t_game *game)
 	read_map_lines(fd, game);
 	if (fd >= 0)
 		close(fd);
-	if (width > 60 || height > 32)
-		handle_error("The map is too big.", game);
 }

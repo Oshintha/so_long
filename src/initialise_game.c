@@ -6,7 +6,7 @@
 /*   By: aoshinth <aoshinth@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 11:00:13 by aoshinth          #+#    #+#             */
-/*   Updated: 2025/01/23 13:41:10 by aoshinth         ###   ########.fr       */
+/*   Updated: 2025/01/24 18:18:01 by aoshinth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,19 @@ static void	initialise_vars(t_game *game)
 
 static void	init_mlx_window(t_game *game)
 {
+	int	screen_width;
+	int	screen_height;
+
 	if (game->map_width <= 0 || game->map_height <= 0)
 		handle_error("Invalid map dimensions. Cannot create game window.",
 			game);
+	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	game->mlx_ptr = mlx_init((game->map_width) * TILESIZE, game->map_height
-			* TILESIZE, "🎁✨ Welcome to The Gift Seeker! 🎄🎮", false);
+			* TILESIZE, "so_long", true);
+	mlx_get_monitor_size(0, &screen_width, &screen_height);
+	if (game->map_width * TILESIZE > screen_width || game->map_height
+		* TILESIZE > screen_height)
+		handle_error("The map is too big to fit on the screen.", game);
 	if (!game->mlx_ptr)
 		handle_error("Unable to create game window. Check MLX initialization.",
 			game);
