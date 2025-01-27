@@ -14,7 +14,7 @@ Welcome to **so_long**, a 2D game developed using the [MLX42](https://github.com
 - [File Structure](#file-structure)
 - [Example Maps](#example-maps)
 - [Development Notes](#development-notes)
-- [License](#license)
+- [Game Interface](#game-interface)
 
 ---
 
@@ -44,18 +44,29 @@ Welcome to **so_long**, a 2D game developed using the [MLX42](https://github.com
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/so_long.git
-   cd so_long
+   git clone https://github.com/Oshintha/so_long.git
    ```
+  ```bash
+  cd so_long
+  ```
+   
 2. Build the project:
-    make
+   
+  ```bash
+  make
+  ```
 
-   How to Run
+## How to Run
+
 Run the game with a .ber map file:
+```bash
 ./so_long path/to/map_file.ber
+```
 
 Example:
+```bash
 ./so_long maps/example_map.ber
+```
 
 Controls:
 
@@ -65,8 +76,8 @@ S / ↓: Move down
 D / →: Move right
 ESC: Quit the game
 
+## Gameplay Instructions
 
-Gameplay Instructions
 Objective: Collect all the collectibles (C) and reach the exit (E).
 The map is made up of the following tiles:
 1: Wall
@@ -76,27 +87,11 @@ C: Collectible
 E: Exit
 The game ends when the player collects all the items and exits the map.
 
-File Structure
+## File Structure
 
-so_long/
-├── includes/          # Header files
-│   ├── so_long.h      # Main game header
-│   ├── libft.h        # libft header
-├── libs/              # Libraries
-│   └── mlx42/         # MLX42 graphics library
-├── maps/              # Example maps
-│   ├── example_map.ber
-│   ├── invalid_map.ber
-├── src/               # Source code
-│   ├── main.c         # Entry point
-│   ├── validate_map.c # Map validation logic
-│   ├── render.c       # Rendering logic
-│   ├── movement.c     # Player movement
-│   ├── cleanup.c      # Cleanup and error handling
-├── Makefile           # Build configuration
-└── README.md          # Project documentation
+![Screenshot from 2025-01-27 14-46-43](https://github.com/user-attachments/assets/2094504c-e505-4b15-8218-b7d57200d1c9)
 
-Example Maps
+## Example Maps
 Valid Map Example (maps/example_map.ber):
 11111
 1P0C1
@@ -112,7 +107,7 @@ Invalid Map Example (maps/invalid_map.ber):
 11111
 This map is invalid because the exit (E) is inaccessible.
 
-Development Notes
+## Development Notes
 Key Challenges
 Flood Fill Algorithm: Implemented to validate that all collectibles and the exit are accessible from the player's starting position.
 Dynamic Screen Validation: Ensured the map fits within the screen dimensions using mlx_get_monitor_size.
@@ -121,7 +116,10 @@ Add animations for collectibles and player movement.
 Introduce new tile types, such as enemies or traps.
 Implement a scoring system based on the number of moves.
 
+## Game Interface
+Below are screenshots of the game interface for so_long:
 
-
+![Screenshot from 2025-01-27 14-40-35](https://github.com/user-attachments/assets/b95f52fe-fef4-4590-9e4a-1fcba73128a9)
+![Screenshot from 2025-01-27 14-42-07](https://github.com/user-attachments/assets/9e54b316-dcde-4f0d-abe3-dcb60ddf09fb)
 
 
